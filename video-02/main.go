@@ -1,25 +1,16 @@
 package main
 
 import (
-	"fmt"
-	"io/ioutil"
+	"log"
 	"net/http"
+	"os"
+
+	"github.com/jamesvrooney/example/handlers"
 )
 
 func main() {
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		d, err := ioutil.ReadAll(r.Body)
-
-		if err != nil {
-			http.Error(w, "Oops", http.StatusBadRequest)
-		}
-
-		fmt.Fprintf(w, "Hello %s", d)
-	})
-
-	http.HandleFunc("/goodbye", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprint(w, "Goodbye World!")
-	})
+	logger := log.New(os.Stdout, "product-api", log.LstdFlags)
+	hh := handlers.NewHello(logger)
 
 	http.ListenAndServe(":8181", nil)
 }

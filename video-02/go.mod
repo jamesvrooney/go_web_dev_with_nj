@@ -1,3 +1,3 @@
-module github.com/jamesvrooney/go-web-dev-with-nj
+module example
 
 go 1.15
