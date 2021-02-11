@@ -4,8 +4,6 @@ import (
 	"log"
 	"net/http"
 	"os"
-
-	"github.com/jamesvrooney/example/handlers"
 )
 
 func main() {
